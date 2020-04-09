@@ -27,9 +27,18 @@ public class UserServiceImpl implements UserService {
       roleDao.add(role);
     }
 
+
+
+    @Transactional
     @Override
     public boolean unicEmail(String email) {
         return userDAO.unicEmail(email);
+    }
+
+    @Transactional
+    @Override
+    public List<Role> getAllRole() {
+        return roleDao.getAllRole();
     }
 
     @Transactional

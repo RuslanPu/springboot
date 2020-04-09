@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.model.Role;
 import com.example.springboot.model.User;
 import com.example.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
-public class HelloController {
+public class AdminController {
 
 	@Autowired
 	private UserService service;
@@ -70,8 +71,12 @@ public class HelloController {
 	}
 
 	@RequestMapping(value="/add", method = RequestMethod.GET)
-	public String addPage() {
-		return "admin/addPage";
+	public ModelAndView addPage() {
+		List<Role> listRoles = service.getAllRole();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("listRoles", listRoles);
+		modelAndView.setViewName("admin/addPage");
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)

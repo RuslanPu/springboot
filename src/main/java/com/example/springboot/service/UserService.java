@@ -14,4 +14,5 @@ public interface UserService {
     User getUserById(Long id);
     void addRole(Role role);
     boolean unicEmail(String email);
+    List<Role> getAllRole();
 }
