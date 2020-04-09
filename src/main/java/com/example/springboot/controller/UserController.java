@@ -29,22 +29,10 @@ public class UserController {
 		return "user/hello";
 	}
 
-	@RequestMapping(value = "/hello1", method = RequestMethod.GET)
-	public String printWelcome1(ModelMap model) {
-
-		List<String> messages = new ArrayList<>();
-		messages.add("Hello!");
-		messages.add("This admin");
-
-		model.addAttribute("messages", messages);
-		return "hello1";
-	}
-
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String printError(ModelMap model) {
 
 		List<String> messages = new ArrayList<>();
-		messages.add("Hello!");
 		messages.add("Error");
 
 		model.addAttribute("messages", messages);
