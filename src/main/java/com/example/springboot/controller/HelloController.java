@@ -17,6 +17,7 @@ public class HelloController {
 	@Autowired
 	private UserService service;
 
+
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public ModelAndView mainPage() {
 		List<User> users = service.getAllUser();
