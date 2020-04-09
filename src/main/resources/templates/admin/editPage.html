@@ -8,23 +8,23 @@
 <body>
     <h2>Edit user</h2>
     <b th:text="${error}"></b>
-    <form th:action="@{/admin/edit}" method="post" th:object="${user}">
-        <input type="hidden" th:name="id" th:field="*{id}">
+    <form th:action="@{/admin/edit}" method="post">
+        <input type="hidden" th:name="id" th:value="${user.id}">
 
         <label for="name">name</label>
-        <input type="text" th:name="name" id="name" th:field="*{name}" >
+        <input type="text" th:name="name" id="name" th:value="${user.name}" >
 
         <label for="password">password</label>
-        <input type="text" th:name="password" id="password" th:field="*{password}">
+        <input type="text" th:name="password" id="password" th:value="${user.password}">
 
         <label for="email">email</label>
-        <input type="text" th:name="email" id="email" th:field="*{email}">
+        <input type="text" th:name="email" id="email" th:value="${user.email}">
 
         <input type="hidden" th:name="checkboxRole" th:value="1"/>
-        <label for="role1">ROLE_USER</label>
-        <input type="checkbox" th:name="checkboxRole" id="role1" th:value="ROLE_USER">
-        <label for="role2">ROLE_ADMIN</label>
-        <input type="checkbox" th:name="checkboxRole" id="role2" th:value="ROLE_ADMIN">
+        <div th:each="role : ${listRoles}">
+            <label th:for="role+${role.id}" th:text="${role.name}"></label>
+            <input type="checkbox" th:name="checkboxRole"  th:id="role+${role.id}"  th:value="${role.name}" th:checked="${user.roles.contains(role)}" >
+        </div>
 
         <input type="submit" value="edit user">
     </form>
