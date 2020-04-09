@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edit user</h2>
+    <b th:text="${error}"></b>
+    <form th:action="@{/admin/edit}" method="post" th:object="${user}">
+        <input type="hidden" th:name="id" th:field="*{id}">
+
+        <label for="name">name</label>
+        <input type="text" th:name="name" id="name" th:field="*{name}" >
+
+        <label for="password">password</label>
+        <input type="text" th:name="password" id="password" th:field="*{password}">
+
+        <label for="email">email</label>
+        <input type="text" th:name="email" id="email" th:field="*{email}">
+
+        <input type="hidden" th:name="checkboxRole" th:value="1"/>
+        <label for="role1">ROLE_USER</label>
+        <input type="checkbox" th:name="checkboxRole" id="role1" th:value="ROLE_USER">
+        <label for="role2">ROLE_ADMIN</label>
+        <input type="checkbox" th:name="checkboxRole" id="role2" th:value="ROLE_ADMIN">
+
+        <input type="submit" value="edit user">
+    </form>
+
+
+<a th:href="@{/perform_logout}" />Logout</a>
+</body>
+</html>
