@@ -78,12 +78,10 @@ public class UserServiceImpl implements UserService {
     }
 
     void parseString(List<Role> roles, String[] checkboxRoles) {
-        for (int i = 0; i < checkboxRoles.length; i ++) {
-            if (checkboxRoles[i].equals("ROLE_USER")) {
-                roles.add(roleDao.getRoleById(10L));
-            }
-            if (checkboxRoles[i].equals("ROLE_ADMIN")) {
-                roles.add(roleDao.getRoleById(11L));
+        for (String role : checkboxRoles) {
+            Role roleDb = roleDao.getRoleByName(role);
+            if (roleDb != null) {
+                roles.add(roleDb);
             }
         }
      }
